@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,11 @@ public class AuthorService {
         Author author = result.orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
         AuthorDTO dto = new AuthorDTO(author);
         return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public List<AuthorDTO> findAll(){
+        List<Author> list = repository.findAll();
+        return list.stream().map(x -> new AuthorDTO(x)).toList();
     }
 }
