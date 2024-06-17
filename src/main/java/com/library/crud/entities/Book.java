@@ -15,6 +15,8 @@ public class Book {
     private String isbn;
     private LocalDate publishDate;
 
+    @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
 
     public Book(){}
