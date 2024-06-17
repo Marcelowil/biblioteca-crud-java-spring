@@ -29,4 +29,18 @@ public class AuthorService {
         List<Author> list = repository.findAll();
         return list.stream().map(x -> new AuthorDTO(x)).toList();
     }
+
+    @Transactional
+    public AuthorDTO insert(AuthorDTO dto){
+        Author author = new Author();
+        convertToEntity(dto, author);
+        author = repository.save(author);
+        return new AuthorDTO(author);
+    }
+
+    private void convertToEntity (AuthorDTO dto, Author author){
+        author.setName(dto.getName());
+        author.setBirthDate(dto.getBirthDate());
+        author.setNationality(dto.getNationality());
+    }
 }

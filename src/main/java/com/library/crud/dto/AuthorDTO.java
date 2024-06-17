@@ -15,11 +15,19 @@ public class AuthorDTO {
 
     private List<Book> books = new ArrayList<>();
 
+    public AuthorDTO(Long id, String name, LocalDate birthDate, String nationality) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.nationality = nationality;
+    }
+
     public AuthorDTO(Author author){
         id = author.getId();
         name = author.getName();
         birthDate = author.getBirthDate();
         nationality = author.getNationality();
+        //books.addAll(author.getBooks());
     }
 
     public Long getId() {
