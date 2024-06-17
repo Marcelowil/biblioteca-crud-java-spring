@@ -15,18 +15,18 @@ public class Author {
     private Long id;
     private String name;
     private LocalDate birthDate;
-    private String nacionality;
+    private String nationality;
 
     @OneToMany(mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 
     public Author(){}
 
-    public Author(Long id, String name, LocalDate birthDate, String nacionality) {
+    public Author(Long id, String name, LocalDate birthDate, String nationality) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
-        this.nacionality = nacionality;
+        this.nationality = nationality;
     }
 
     public Long getId() {
@@ -53,12 +53,12 @@ public class Author {
         this.birthDate = birthDate;
     }
 
-    public String getNacionality() {
-        return nacionality;
+    public String getNationality() {
+        return nationality;
     }
 
-    public void setNacionality(String nacionality) {
-        this.nacionality = nacionality;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public List<Book> getBooks() {
