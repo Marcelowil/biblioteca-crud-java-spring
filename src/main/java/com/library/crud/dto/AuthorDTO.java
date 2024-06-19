@@ -27,7 +27,7 @@ public class AuthorDTO {
         name = author.getName();
         birthDate = author.getBirthDate();
         nationality = author.getNationality();
-        //books.addAll(author.getBooks());
+        books.addAll(author.getBooks());
     }
 
     public Long getId() {

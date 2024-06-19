@@ -38,6 +38,15 @@ public class AuthorService {
         return new AuthorDTO(author);
     }
 
+    @Transactional
+    public AuthorDTO update(Long id, AuthorDTO dto){
+        Author author = repository.findById(id).orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+        convertToEntity(dto, author);
+        author = repository.save(author);
+        return new AuthorDTO(author);
+    }
+    
+
     private void convertToEntity (AuthorDTO dto, Author author){
         author.setName(dto.getName());
         author.setBirthDate(dto.getBirthDate());

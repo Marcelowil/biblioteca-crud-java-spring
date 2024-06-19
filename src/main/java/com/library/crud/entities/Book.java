@@ -1,5 +1,6 @@
 package com.library.crud.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonIgnore
     private Author author;
 
     public Book(){}
