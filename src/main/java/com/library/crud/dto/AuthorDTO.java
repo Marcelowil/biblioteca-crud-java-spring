@@ -1,5 +1,6 @@
 package com.library.crud.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.library.crud.entities.Author;
 import com.library.crud.entities.Book;
 
@@ -12,7 +13,6 @@ public class AuthorDTO {
     private String name;
     private LocalDate birthDate;
     private String nationality;
-
     private List<Book> books = new ArrayList<>();
 
     public AuthorDTO(Long id, String name, LocalDate birthDate, String nationality) {
