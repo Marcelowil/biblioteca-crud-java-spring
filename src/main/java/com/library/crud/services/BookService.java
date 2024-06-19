@@ -44,13 +44,18 @@ public class BookService {
         return new BookDTO(book);
     }
 
+    @Transactional
+    public void deleteById(Long id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Recurso não encotrado");
+        }
+        repository.deleteById(id);
+    }
+
     public void convertToEntity(BookDTO dto, Book book){
         book.setTitle(dto.getTitle());
         book.setIsbn(dto.getIsbn());
         book.setPublishDate(dto.getPublishDate());
         book.setAuthor(dto.getAuthor());
     }
-
-
-
 }
