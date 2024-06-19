@@ -1,6 +1,7 @@
 package com.library.crud.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.library.crud.entities.Author;
 import com.library.crud.entities.Book;
 
 import java.time.LocalDate;
@@ -10,14 +11,14 @@ public class BookDTO {
     private String title;
     private String isbn;
     private LocalDate publishDate;
-    private AuthorDTO authorDTO;
+    private Author author;
 
-    public BookDTO(Long id, String title, String isbn, LocalDate publishDate, AuthorDTO authorDTO) {
+    public BookDTO(Long id, String title, String isbn, LocalDate publishDate, Author author) {
         this.id = id;
         this.title = title;
         this.isbn = isbn;
         this.publishDate = publishDate;
-        this.authorDTO = authorDTO;
+        this.author = author;
     }
 
     public BookDTO(Book book){
@@ -25,7 +26,7 @@ public class BookDTO {
         title = book.getTitle();
         isbn = book.getIsbn();
         publishDate = book.getPublishDate();
-        authorDTO = new AuthorDTO(book.getAuthor());
+        author = book.getAuthor();
     }
 
     public Long getId() {
@@ -44,7 +45,7 @@ public class BookDTO {
         return publishDate;
     }
 
-    public AuthorDTO getAuthorDTO() {
-        return authorDTO;
+    public Author getAuthor() {
+        return author;
     }
 }

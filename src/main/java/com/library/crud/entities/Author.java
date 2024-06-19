@@ -1,5 +1,6 @@
 package com.library.crud.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ public class Author {
     private String nationality;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Book> books = new ArrayList<>();
 
     public Author(){}

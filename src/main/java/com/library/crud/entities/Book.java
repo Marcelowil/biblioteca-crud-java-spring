@@ -18,10 +18,17 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    @JsonIgnore
     private Author author;
 
     public Book(){}
+
+    public Book(Long id, String title, String isbn, LocalDate publishDate, Author author) {
+        this.id = id;
+        this.title = title;
+        this.isbn = isbn;
+        this.publishDate = publishDate;
+        this.author = author;
+    }
 
     public Long getId() {
         return id;
