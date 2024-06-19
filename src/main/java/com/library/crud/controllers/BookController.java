@@ -33,4 +33,10 @@ public class BookController {
         dto = service.insert(dto);
         return ResponseEntity.ok(dto);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO dto){
+        dto = service.update(id, dto);
+        return ResponseEntity.ok(dto);
+    }
 }

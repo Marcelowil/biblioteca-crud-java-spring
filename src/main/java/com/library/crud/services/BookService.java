@@ -36,8 +36,15 @@ public class BookService {
         return new BookDTO(book);
     }
 
+    @Transactional
+    public BookDTO update(Long id, BookDTO dto){
+        Book book = repository.findById(id).orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+        convertToEntity(dto, book);
+        book = repository.save(book);
+        return new BookDTO(book);
+    }
+
     public void convertToEntity(BookDTO dto, Book book){
-        book.setId(dto.getId());
         book.setTitle(dto.getTitle());
         book.setIsbn(dto.getIsbn());
         book.setPublishDate(dto.getPublishDate());
