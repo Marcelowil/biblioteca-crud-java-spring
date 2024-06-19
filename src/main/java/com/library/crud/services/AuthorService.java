@@ -45,7 +45,14 @@ public class AuthorService {
         author = repository.save(author);
         return new AuthorDTO(author);
     }
-    
+
+    @Transactional
+    public void deleteById(Long id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Recurso não encontrado");
+        }
+        repository.deleteById(id);
+    }
 
     private void convertToEntity (AuthorDTO dto, Author author){
         author.setName(dto.getName());
